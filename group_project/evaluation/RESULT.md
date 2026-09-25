@@ -41,12 +41,27 @@ Dựa trên kết quả đo lường, cấu hình chiến thắng cuối cùng l
 - Context Precision và Context Recall ở mức ổn định (~0.77).
 
 ## 4. Worst Performers
-Mặc dù Config A tốt nhất, hệ thống vẫn chưa đạt điểm tuyệt đối về khả năng truy xuất Context:
-1. **Lỗi nhiễu Chunking:** Một số câu hỏi truy xuất ra những đoạn văn bản bị cắt giữa chừng (cắt ngang ý), dẫn đến Recall chưa đạt 1.0. 
-2. **Từ khóa trùng lặp:** Những câu hỏi về xử lý sai sót hóa đơn thường lấy ra cả quy định chung lẫn quy định riêng biệt do độ tương đồng ngữ nghĩa (Cosine Similarity) của chúng là quá sát nhau.
+Dưới đây là 3 trường hợp có điểm số truy xuất Context Recall và Precision kém nhất trong tập Golden Dataset và nguyên nhân gốc rễ:
+
+1. **Trường hợp 1:** *"Nếu hóa đơn khởi tạo từ máy tính tiền bị sai tên, địa chỉ thì có được miễn lập lại hóa đơn không?"*
+   - **Metric:** Context Precision thấp.
+   - **Nguyên nhân gốc rễ:** Câu hỏi này có hai lớp ngữ nghĩa: "sai tên, địa chỉ" thường được miễn lập lại và "từ máy tính tiền" là ngoại lệ bắt buộc phải lập lại. Mô hình Dense Embedding bị bối rối và lấy nhầm các chunk quy định chung về hóa đơn thông thường lên top đầu, đẩy phần ngoại lệ về máy tính tiền xuống dưới.
+
+2. **Trường hợp 2:** *"Các đối tượng nào không được tính là người bán phải lập hóa đơn điện tử theo NĐ 254?"*
+   - **Metric:** Context Recall thấp.
+   - **Nguyên nhân gốc rễ:** Câu hỏi mang tính chất phủ định logic. Các mô hình Embedding thường bỏ qua từ "không" và mapping thẳng câu hỏi này vào các đoạn văn bản mô tả về đối tượng áp dụng, khiến LLM không tìm thấy thông tin ngoại trừ.
+
+3. **Trường hợp 3:** *"Nếu trong cùng 1 tháng tôi lập sai nhiều hóa đơn của cùng 1 người mua thì có được gom chung lại xử lý không?"*
+   - **Metric:** Context Recall bị thiếu hụt.
+   - **Nguyên nhân gốc rễ:** Lỗi nhiễu Chunking. Quy định về việc lập chung 1 bảng kê nằm ở cuối khoản 1, nhưng do thuật toán RecursiveCharacterTextSplitter cắt theo độ dài cố định, đoạn này bị tách sang một chunk khác biệt hoàn toàn với chunk nói về xử lý hóa đơn sai. 
 
 ## 5. Recommendations
-Dựa trên kết quả thực tế, nhóm đề xuất hướng cải thiện:
-- **Tối ưu hóa tham số RRF:** Thay vì để RRF với công thức `1 / (rank + 60)` chia đều trọng số 50-50 cho cả Dense và BM25, cần tinh chỉnh lại trọng số (Weighted Hybrid Search). Có thể cấp cho Dense 80% trọng số và BM25 chỉ chiếm 20% (chỉ dùng BM25 để rà sót mã số luật).
-- **Cải thiện thuật toán Chunking:** Áp dụng phương pháp `Parent Document Retriever` hoặc Semantic Chunking thay vì chia cắt cố định (RecursiveCharacterTextSplitter) để bảo toàn trọn vẹn ngữ nghĩa các điều luật.
-- **Tùy chỉnh hệ số phạt BM25:** Loại bỏ triệt để các Stop words tiếng Việt chuyên ngành thuế để BM25 không bị nhiễu.
+Dựa trên các nguyên nhân gốc rễ trên, nhóm đề xuất phương án cải thiện và cách kiểm tra lại:
+
+1. **Cải thiện thuật toán Chunking để xử lý trường hợp 3:**
+   - **Đề xuất:** Áp dụng phương pháp Semantic Chunking hoặc Parent Document Retriever để không cắt ngang các điều khoản luật liên kết với nhau.
+   - **Cách kiểm tra lại:** Xóa DB cũ, chạy lại index với thuật toán mới, sau đó chạy lại script đánh giá. Nếu Context Recall của trường hợp 3 tăng lên 1.0 hoặc Overall Recall vượt ngưỡng 0.85 thì phương án này thành công.
+
+2. **Áp dụng Query Rewriting / HyDE để xử lý trường hợp 1 và 2:**
+   - **Đề xuất:** Thêm một prompt phụ cho LLM để phân tích cú pháp (thấy từ "không" thì đổi thành search term phủ định) và phân rã ý (tách "máy tính tiền" thành keyword bắt buộc).
+   - **Cách kiểm tra lại:** Cập nhật hàm retrieval để in ra query đã được rewrite, kiểm tra bằng mắt thường. Sau đó chạy A/B Test so sánh điểm Context Precision giữa luồng có Query Rewriting và không Query Rewriting trên chính Golden Dataset này để đo đếm mức độ chênh lệch.
