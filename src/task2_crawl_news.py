@@ -21,25 +21,47 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "news"
 
 ARTICLE_URLS = [
-    # TODO: Thêm ít nhất 5 public URL.
+    "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/xu-ly-hoa-don-dien-tu-sai-sot-tu-ngay-01-7-2026-376.html",
+
+    "https://www.meinvoice.vn/tin-tuc/13508/xu-ly-hoa-don-dien-tu-co-sai-sot/",
+
+    "https://chinhsachonline.chinhphu.vn/hoa-don-tu-may-tinh-tien-sai-ten-dia-chi-co-phai-lap-lai-90814.htm",
+
+    "https://chinhsachonline.chinhphu.vn/cach-xu-ly-hoa-don-dien-tu-tu-may-tinh-tien-bi-lap-sai-91567.htm",
+
+    "https://cads.com.vn/vi/thong-tu-912026tt-btc-6-truong-hop-hoa-don-sai-sot-thuong-gap-va-cach-xu-ly-chi-tiet-nws311.html",
 ]
 
 
 async def crawl_article(url: str) -> dict:
-    # TODO: Implement crawling logic.
-    #
-    # from datetime import datetime
-    # from crawl4ai import AsyncWebCrawler
-    #
-    # async with AsyncWebCrawler() as crawler:
-    #     result = await crawler.arun(url=url)
-    #     return {
-    #         "url": url,
-    #         "title": result.metadata.get("title", "Unknown"),
-    #         "date_crawled": datetime.now().isoformat(),
-    #         "content_markdown": result.markdown,
-    #     }
-    raise NotImplementedError("Implement crawl_article")
+    """Crawl một bài viết và chuẩn hóa metadata."""
+
+    async with AsyncWebCrawler() as crawler:
+        result = await crawler.arun(url=url)
+
+        if not result.success:
+            raise RuntimeError(
+                f"Crawl failed: {url}"
+            )
+
+        title = "Unknown"
+
+        if result.metadata:
+            title = result.metadata.get("title", "Unknown")
+
+        markdown = str(result.markdown).strip()
+
+        if not markdown:
+            raise ValueError(
+                f"Empty content returned from {url}"
+            )
+
+        return {
+            "url": url,
+            "title": title,
+            "date_crawled": datetime.now().isoformat(),
+            "content_markdown": markdown,
+        }
 
 
 async def crawl_all() -> None:

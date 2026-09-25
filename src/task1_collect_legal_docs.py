@@ -24,20 +24,34 @@ def setup_directory() -> None:
 
 
 def download_documents() -> None:
-    """Tải ít nhất 3 PDF/DOCX từ nguồn công khai."""
-    # TODO: Có thể tải thủ công hoặc dùng requests.
-    #
-    # Ví dụ:
-    # import requests
-    #
-    # sources = {
-    #     "policy-a.pdf": "https://example.edu/policy-a.pdf",
-    # }
-    # for filename, url in sources.items():
-    #     response = requests.get(url, timeout=30)
-    #     response.raise_for_status()
-    #     (DATA_DIR / filename).write_bytes(response.content)
-    raise NotImplementedError("Implement download_documents")
+    """
+    Các tài liệu pháp lý được tải thủ công từ Công báo Chính phủ
+    và lưu tại data/landing/legal/.
+    """
+
+    required_files = [
+        "luat_108_2025_quan_ly_thue.pdf",
+        "nghi_dinh_254_2026_hoa_don_dien_tu.pdf",
+        "thong_tu_91_2026_hoa_don_dien_tu.pdf",
+    ]
+
+    missing_files = []
+
+    for filename in required_files:
+        path = DATA_DIR / filename
+
+        if not path.exists():
+            missing_files.append(filename)
+        else:
+            print(f"Found: {path.name}")
+
+    if missing_files:
+        raise FileNotFoundError(
+            "Missing legal documents:\n"
+            + "\n".join(f"- {name}" for name in missing_files)
+        )
+
+    print("Task 1 completed: 3 legal documents are ready.")
 
 
 if __name__ == "__main__":
