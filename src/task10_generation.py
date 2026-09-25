@@ -97,11 +97,11 @@ def call_llm(system_prompt: str, user_message: str) -> str:
         return response.text
 
 
-def generate_with_citation(query: str, top_k: int = TOP_K, use_reranking: bool = True) -> dict:
+def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
     """Trả về GenerationResult."""
     # TODO: Implement end-to-end generation.
     #
-    chunks = retrieve(query, top_k=top_k, use_reranking=use_reranking)
+    chunks = retrieve(query, top_k=top_k, use_reranking=True)
     if not chunks:
         return {
             "answer": "Tôi không thể xác minh thông tin này từ nguồn hiện có.",
