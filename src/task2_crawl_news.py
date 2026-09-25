@@ -24,7 +24,7 @@ from crawl4ai import AsyncWebCrawler
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "news"
 
 ARTICLE_URLS = [
-    "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/xu-ly-hoa-don-dien-tu-sai-sot-tu-ngay-01-7-2026-376.html",
+    "https://baochinhphu.vn/hoa-don-tu-may-tinh-tien-sai-ten-dia-chi-co-phai-lap-lai-102260811155618795.htm",
 
     "https://www.meinvoice.vn/tin-tuc/13508/xu-ly-hoa-don-dien-tu-co-sai-sot/",
 
