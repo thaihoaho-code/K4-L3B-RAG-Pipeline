@@ -49,5 +49,5 @@ def retrieve(
 
 
 if __name__ == "__main__":
-    for result in retrieve("test query", top_k=3):
+    for result in retrieve("Định dạng hóa đơn điện tử", top_k=3):
         print(result)

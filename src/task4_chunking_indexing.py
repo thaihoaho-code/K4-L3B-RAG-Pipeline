@@ -12,7 +12,10 @@ chạy lại pipeline không tạo dữ liệu trùng. Task 5 phải dùng chung
 """
 
 from pathlib import Path
+import dotenv
+from google import genai
 
+dotenv.load_dotenv()
 
 STANDARDIZED_DIR = Path(__file__).parent.parent / "data" / "standardized"
 CHROMA_DIR = Path(__file__).parent.parent / "chroma_db"
@@ -22,34 +25,45 @@ CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
 CHUNKING_METHOD = "recursive"
 
-EMBEDDING_MODEL = "BAAI/bge-m3"
+# EMBEDDING_MODEL = "BAAI/bge-m3"
+EMBEDDING_MODEL = "gemini-embedding-001"
 EMBEDDING_DIM = 1024
 
 COLLECTION_NAME = "rag_documents"
 
+MAX_BATCH_SIZE = 90  
+
+from google import genai
+client = genai.Client()
 
 def embed_texts(texts: list[str]) -> list[list[float]]:
     # TODO: Dispatch theo EMBEDDING_PROVIDER trong .env.
     #
-    # Provider local gợi ý:
-    # from sentence_transformers import SentenceTransformer
-    # model = SentenceTransformer(EMBEDDING_MODEL)
-    # return model.encode(texts).tolist()
-    raise NotImplementedError("Implement embed_texts")
-
+    # Provider gemini:
+    embeddings_result = []
+    for i in range(0, len(texts), MAX_BATCH_SIZE):
+        batch = texts[i:i + MAX_BATCH_SIZE]
+        
+        response = client.models.embed_content(
+            model="gemini-embedding-001",
+            contents=batch
+        )
+        print(f"Embedded batch {i // MAX_BATCH_SIZE + 1}/{(len(texts) + MAX_BATCH_SIZE - 1) // MAX_BATCH_SIZE}")
+ 
+        embeddings_result.extend([emb.values for emb in response.embeddings])
+    return embeddings_result
 
 def get_collection():
     """Mở Chroma collection dùng cosine distance."""
     # TODO: Tạo hoặc mở persistent collection.
     #
-    # import chromadb
-    # CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-    # client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    # return client.get_or_create_collection(
-    #     name=COLLECTION_NAME,
-    #     metadata={"hnsw:space": "cosine"},
-    # )
-    raise NotImplementedError("Implement get_collection")
+    import chromadb
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    return client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
 
 
 def load_documents() -> list[dict]:

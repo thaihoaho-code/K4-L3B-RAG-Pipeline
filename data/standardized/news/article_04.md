@@ -4,7 +4,7 @@ doc_type: "news"
 source_file: "article_04.json"
 source_url: "https://chinhsachonline.chinhphu.vn/cach-xu-ly-hoa-don-dien-tu-tu-may-tinh-tien-bi-lap-sai-91567.htm"
 date_crawled: "2026-09-25T03:19:18.461788+00:00"
-converted_at: "2026-09-25T03:19:45.587754+00:00"
+converted_at: "2026-09-25T03:46:11.658156+00:00"
 ---
 # Cách xử lý hóa đơn điện tử từ máy tính tiền bị lập sai
 

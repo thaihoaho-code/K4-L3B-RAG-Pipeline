@@ -4,7 +4,7 @@ doc_type: "news"
 source_file: "article_05.json"
 source_url: "https://cads.com.vn/vi/thong-tu-912026tt-btc-6-truong-hop-hoa-don-sai-sot-thuong-gap-va-cach-xu-ly-chi-tiet-nws311.html"
 date_crawled: "2026-09-25T03:19:21.813148+00:00"
-converted_at: "2026-09-25T03:19:45.587754+00:00"
+converted_at: "2026-09-25T03:46:11.658156+00:00"
 ---
 # THÔNG TƯ 91/2026/TT-BTC: 6 TRƯỜNG HỢP HÓA ĐƠN SAI SÓT THƯỜNG GẶP VÀ CÁCH XỬ LÝ CHI TIẾT
 

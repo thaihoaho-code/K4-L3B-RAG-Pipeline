@@ -4,7 +4,7 @@ doc_type: "news"
 source_file: "article_01.json"
 source_url: "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/xu-ly-hoa-don-dien-tu-sai-sot-tu-ngay-01-7-2026-376.html"
 date_crawled: "2026-09-25T03:18:53.644152+00:00"
-converted_at: "2026-09-25T03:19:45.587754+00:00"
+converted_at: "2026-09-25T03:46:11.658156+00:00"
 ---
 # Xử lý hóa đơn điện tử sai sót từ ngày 01/7/2026
 

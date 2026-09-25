@@ -12,8 +12,10 @@ Nếu context không đủ hoặc provider lỗi, trả safe refusal; không b�
 """
 
 import os
+from wsgiref import types
 
 from dotenv import load_dotenv
+from google import genai
 
 from .task9_retrieval_pipeline import retrieve
 
@@ -24,8 +26,8 @@ TOP_K = 5
 TOP_P = 0.9
 TEMPERATURE = 0.3
 
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai")
-LLM_MODEL = os.getenv("LLM_MODEL", "")
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini")
+LLM_MODEL = os.getenv("LLM_MODEL", "gemini-3.6-flash")
 
 SYSTEM_PROMPT = """Trả lời chỉ từ context được cung cấp.
 Mỗi khẳng định phải có citation. Nếu thiếu evidence, hãy từ chối xác minh."""
@@ -58,18 +60,41 @@ def format_context(chunks: list[dict]) -> str:
 
 def call_llm(system_prompt: str, user_message: str) -> str:
     """Gọi OpenAI, Gemini hoặc Anthropic theo cấu hình."""
-    # TODO: Dispatch theo LLM_PROVIDER.
-    #
-    # - openai    -> OPENAI_API_KEY
-    # - gemini    -> GEMINI_API_KEY
-    # - anthropic -> ANTHROPIC_API_KEY
-    #
-    # Dùng LLM_MODEL và trả về text thuần cho cả ba nhánh.
-    import google.generativeai as genai
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-    model = genai.GenerativeModel(LLM_MODEL)
-    response = model.generate_content([system_prompt, user_message])
-    return response.text
+    provider = LLM_PROVIDER.lower()
+    
+    if provider == "openai":
+        import openai
+        client = openai.Client(api_key=os.getenv("OPENAI_API_KEY"))
+        response = client.chat.completions.create(
+            model=LLM_MODEL or "gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_message}
+            ]
+        )
+        return response.choices[0].message.content
+        
+    elif provider == "anthropic":
+        import anthropic
+        client = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        response = client.messages.create(
+            model=LLM_MODEL or "claude-3-haiku-20240307",
+            max_tokens=1024,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_message}]
+        )
+        return response.content[0].text
+        
+    else: # Mặc định là gemini
+        from google import genai
+        from google.genai import types  
+        client = genai.Client()
+        response = client.models.generate_content(
+            model=LLM_MODEL or "gemini-3.6-flash",
+            contents=user_message,
+            config=types.GenerateContentConfig(system_instruction=system_prompt),
+        )
+        return response.text
 
 
 def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
@@ -95,4 +120,4 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
 
 
 if __name__ == "__main__":
-    print(generate_with_citation("test query"))
+    print(generate_with_citation("Định dạng hóa đơn điện tử là gì"))

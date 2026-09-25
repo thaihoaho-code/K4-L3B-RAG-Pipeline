@@ -35,5 +35,5 @@ def semantic_search(query: str, top_k: int = 10) -> list[dict]:
     return sorted(results, key=lambda item: item["score"], reverse=True)[:top_k]
 
 if __name__ == "__main__":
-    for result in semantic_search("test query", top_k=3):
+    for result in semantic_search("Định dạng hóa đơn điện tử", top_k=3):
         print(result)

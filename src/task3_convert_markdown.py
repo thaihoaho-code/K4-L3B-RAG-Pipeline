@@ -122,6 +122,11 @@ def convert_legal_docs() -> None:
 
     converted_at = datetime.now(timezone.utc).isoformat()
     for path in paths:
+        output = output_dir / f"{path.stem}.md"
+        if output.exists():
+            print(f"Bỏ qua (đã convert): {output}")
+            continue
+            
         item = manifest.get(path.name, {})
         title = item.get("title", path.stem.replace("_", " "))
         content = _clean_markdown(_convert_with_markitdown(path))
@@ -134,7 +139,6 @@ def convert_legal_docs() -> None:
             "source_url": item.get("url", ""),
             "converted_at": converted_at,
         }
-        output = output_dir / f"{path.stem}.md"
         body = f"# {title}\n\n{content}\n"
         output.write_text(_frontmatter(metadata) + body, encoding="utf-8")
         print(f"Saved: {output}")
@@ -151,6 +155,11 @@ def convert_news_articles() -> None:
     required = {"url", "title", "date_crawled", "content_markdown"}
     converted_at = datetime.now(timezone.utc).isoformat()
     for path in paths:
+        output = output_dir / f"{path.stem}.md"
+        if output.exists():
+            print(f"Bỏ qua (đã convert): {output}")
+            continue
+            
         data = json.loads(path.read_text(encoding="utf-8"))
         missing = required - data.keys()
         if missing:
@@ -167,7 +176,6 @@ def convert_news_articles() -> None:
             "date_crawled": str(data["date_crawled"]).strip(),
             "converted_at": converted_at,
         }
-        output = output_dir / f"{path.stem}.md"
         body = f"# {metadata['title']}\n\n{content}\n"
         output.write_text(_frontmatter(metadata) + body, encoding="utf-8")
         print(f"Saved: {output}")

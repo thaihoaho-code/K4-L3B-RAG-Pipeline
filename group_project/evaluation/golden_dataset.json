@@ -1,0 +1,77 @@
+[
+  {
+    "question": "Thuế là gì?",
+    "expected_answer": "Thuế là một khoản nộp ngân sách nhà nước bắt buộc của tổ chức, hộ gia đình, hộ kinh doanh, cá nhân theo quy định của các luật thuế.",
+    "expected_context": "Khoản 1 Điều 3 Luật Quản lý thuế số 108/2025/QH15."
+  },
+  {
+    "question": "Hóa đơn điện tử là gì?",
+    "expected_answer": "Hóa đơn điện tử là hóa đơn có mã hoặc không có mã của cơ quan thuế được thể hiện ở dạng dữ liệu điện tử.",
+    "expected_context": "Điều 89 Luật Quản lý thuế số 108/2025/QH15."
+  },
+  {
+    "question": "Cơ quan quản lý thuế bao gồm những cơ quan nào?",
+    "expected_answer": "Cơ quan quản lý thuế bao gồm cơ quan thuế và cơ quan hải quan.",
+    "expected_context": "Khoản 2 Điều 2 Luật Quản lý thuế."
+  },
+  {
+    "question": "Đăng ký thuế bao gồm những thông tin nào?",
+    "expected_answer": "Đăng ký thuế bao gồm tên người nộp thuế, mã số thuế, địa chỉ trụ sở chính, và các thông tin liên quan khác.",
+    "expected_context": "Chương III Luật Quản lý thuế."
+  },
+  {
+    "question": "Thời hạn nộp hồ sơ khai thuế môn bài là khi nào?",
+    "expected_answer": "Chậm nhất là ngày 30 tháng 01 năm sau năm thành lập hoặc bắt đầu hoạt động sản xuất, kinh doanh.",
+    "expected_context": "Luật Quản lý thuế."
+  },
+  {
+    "question": "Người nộp thuế có quyền gì?",
+    "expected_answer": "Người nộp thuế có quyền được hỗ trợ, hướng dẫn thực hiện việc nộp thuế; hưởng các ưu đãi về thuế; khiếu nại, khởi kiện các quyết định hành chính.",
+    "expected_context": "Điều 16 Luật Quản lý thuế."
+  },
+  {
+    "question": "Xử lý hóa đơn điện tử viết sai như thế nào?",
+    "expected_answer": "Người bán lập thông báo gửi cơ quan thuế để hủy hóa đơn sai sót và lập hóa đơn mới thay thế.",
+    "expected_context": "Nghị định 254/2026/NĐ-CP."
+  },
+  {
+    "question": "Mã số thuế cá nhân có thay đổi khi chuyển nơi ở không?",
+    "expected_answer": "Mã số thuế cá nhân không thay đổi trong suốt cuộc đời của cá nhân đó.",
+    "expected_context": "Điều 30 Luật Quản lý thuế."
+  },
+  {
+    "question": "Ai là đối tượng phải nộp thuế thu nhập cá nhân?",
+    "expected_answer": "Cá nhân cư trú có thu nhập chịu thuế phát sinh trong và ngoài lãnh thổ Việt Nam; cá nhân không cư trú có thu nhập chịu thuế phát sinh tại Việt Nam.",
+    "expected_context": "Luật Thuế thu nhập cá nhân."
+  },
+  {
+    "question": "Trường hợp nào bị cưỡng chế thi hành quyết định hành chính về quản lý thuế?",
+    "expected_answer": "Người nộp thuế nợ tiền thuế quá 90 ngày kể từ ngày hết thời hạn nộp thuế theo quy định.",
+    "expected_context": "Điều 124 Luật Quản lý thuế."
+  },
+  {
+    "question": "Hóa đơn điện tử có mã của cơ quan thuế là gì?",
+    "expected_answer": "Là hóa đơn điện tử được cơ quan thuế cấp mã trước khi tổ chức, cá nhân bán hàng hóa, cung cấp dịch vụ gửi cho người mua.",
+    "expected_context": "Điều 89 Luật Quản lý thuế."
+  },
+  {
+    "question": "Thời hạn giải quyết hồ sơ hoàn thuế là bao lâu?",
+    "expected_answer": "Chậm nhất là 06 ngày làm việc đối với hồ sơ thuộc diện hoàn thuế trước, kiểm tra sau.",
+    "expected_context": "Điều 75 Luật Quản lý thuế."
+  },
+  {
+    "question": "Khai bổ sung hồ sơ khai thuế được thực hiện trong thời hạn nào?",
+    "expected_answer": "Được thực hiện trong thời hạn 10 năm kể từ ngày hết thời hạn nộp hồ sơ khai thuế của kỳ tính thuế có sai, sót.",
+    "expected_context": "Điều 47 Luật Quản lý thuế."
+  },
+  {
+    "question": "Mức phạt chậm nộp tiền thuế là bao nhiêu?",
+    "expected_answer": "Mức tính tiền chậm nộp bằng 0,03%/ngày tính trên số tiền thuế chậm nộp.",
+    "expected_context": "Điều 59 Luật Quản lý thuế."
+  },
+  {
+    "question": "Kỳ tính thuế thu nhập doanh nghiệp được xác định như thế nào?",
+    "expected_answer": "Được xác định theo năm dương lịch hoặc năm tài chính.",
+    "expected_context": "Luật Thuế thu nhập doanh nghiệp."
+  }
+]

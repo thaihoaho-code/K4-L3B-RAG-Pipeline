@@ -20,9 +20,20 @@ def build_bm25_index(corpus: list[dict]):
 
 def lexical_search(query: str, top_k: int = 10) -> list[dict]:
     """Trả về BM25 SearchResult theo score giảm dần."""
-    # TODO: Tính BM25 scores và map lại corpus.
-    #
     import numpy as np
+    
+    global CORPUS
+    if not CORPUS:
+        from .task4_chunking_indexing import get_collection
+        collection = get_collection()
+        data = collection.get(include=["documents", "metadatas"])
+        if data and data["ids"]:
+            for idx, doc, meta in zip(data["ids"], data["documents"], data["metadatas"]):
+                CORPUS.append({"id": idx, "content": doc, "metadata": meta})
+    
+    if not CORPUS:
+        return []
+        
     bm25 = build_bm25_index(CORPUS)
     scores = bm25.get_scores(query.lower().split())
     indices = np.argsort(scores)[::-1][:top_k]
@@ -42,5 +53,5 @@ def lexical_search(query: str, top_k: int = 10) -> list[dict]:
 
 
 if __name__ == "__main__":
-    for result in lexical_search("test query", top_k=3):
+    for result in lexical_search("Định dạng hóa đơn điện tử", top_k=3):
         print(result)
