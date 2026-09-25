@@ -15,7 +15,10 @@ Cài browser trước khi chạy:
 
 import asyncio
 import json
+from datetime import datetime, timezone
 from pathlib import Path
+
+from crawl4ai import AsyncWebCrawler
 
 
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "news"
@@ -40,26 +43,24 @@ async def crawl_article(url: str) -> dict:
         result = await crawler.arun(url=url)
 
         if not result.success:
-            raise RuntimeError(
-                f"Crawl failed: {url}"
-            )
+            error_message = getattr(result, "error_message", None)
+            detail = f" ({error_message})" if error_message else ""
+            raise RuntimeError(f"Crawl failed: {url}{detail}")
 
-        title = "Unknown"
+        metadata = result.metadata or {}
+        title = str(metadata.get("title") or "").strip()
+        if not title:
+            title = url
 
-        if result.metadata:
-            title = result.metadata.get("title", "Unknown")
-
-        markdown = str(result.markdown).strip()
-
-        if not markdown:
-            raise ValueError(
-                f"Empty content returned from {url}"
-            )
+        raw_markdown = result.markdown
+        if not isinstance(raw_markdown, str) or not raw_markdown.strip():
+            raise ValueError(f"Empty content returned from {url}")
+        markdown = raw_markdown.strip()
 
         return {
             "url": url,
             "title": title,
-            "date_crawled": datetime.now().isoformat(),
+            "date_crawled": datetime.now(timezone.utc).isoformat(),
             "content_markdown": markdown,
         }
 
@@ -67,6 +68,12 @@ async def crawl_article(url: str) -> dict:
 async def crawl_all() -> None:
     """Crawl và lưu từng bài thành một file JSON."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    if len(set(ARTICLE_URLS)) < 5:
+        raise ValueError("ARTICLE_URLS must contain at least 5 unique URLs")
+
+    saved_count = 0
+    failures = []
 
     for index, url in enumerate(ARTICLE_URLS, 1):
         try:
@@ -77,8 +84,18 @@ async def crawl_all() -> None:
                 encoding="utf-8",
             )
             print(f"Saved: {output}")
+            saved_count += 1
         except Exception as error:
             print(f"Failed: {url} — {error}")
+            failures.append(url)
+
+    if saved_count < 5:
+        raise RuntimeError(
+            f"Only {saved_count} articles were saved; at least 5 are required. "
+            f"Failed URLs: {', '.join(failures)}"
+        )
+
+    print(f"Task 2 completed: {saved_count} articles are ready.")
 
 
 if __name__ == "__main__":
