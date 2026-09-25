@@ -13,9 +13,9 @@ def build_bm25_index(corpus: list[dict]):
     """Tạo BM25 index từ cùng corpus chunks của Task 4."""
     # TODO: Tokenize và tạo BM25 index.
     #
-    from rank_bm25 import BM25Okapi
+    from rank_bm25 import BM25Plus
     tokenized = [item["content"].lower().split() for item in corpus]
-    return BM25Okapi(tokenized)
+    return BM25Plus(tokenized)
 
 
 def lexical_search(query: str, top_k: int = 10) -> list[dict]:
