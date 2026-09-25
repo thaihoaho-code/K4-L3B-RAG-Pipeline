@@ -1,0 +1,27 @@
+{
+  "topic": "Xử lý hóa đơn điện tử đã lập có sai sót của doanh nghiệp",
+  "date_crawled": "2026-09-25T03:17:17.391662+00:00",
+  "sources": [
+    {
+      "filename": "luat_108_2025_quan_ly_thue.pdf",
+      "title": "Luật số 108/2025/QH15 - Luật Quản lý thuế",
+      "url": "https://congbao.chinhphu.vn/van-ban/luat-so-108-2025-qh15-468670.htm",
+      "local_file": "luat_108_2025_quan_ly_thue.pdf",
+      "status": "existing"
+    },
+    {
+      "filename": "nghi_dinh_254_2026_hoa_don_dien_tu.pdf",
+      "title": "Nghị định số 254/2026/NĐ-CP về hóa đơn điện tử, chứng từ điện tử",
+      "url": "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-254-2026-nd-cp-469957.htm",
+      "local_file": "nghi_dinh_254_2026_hoa_don_dien_tu.pdf",
+      "status": "existing"
+    },
+    {
+      "filename": "thong_tu_91_2026_hoa_don_dien_tu.pdf",
+      "title": "Thông tư số 91/2026/TT-BTC về hóa đơn điện tử, chứng từ điện tử",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-91-2026-tt-btc-470171.htm",
+      "local_file": "thong_tu_91_2026_hoa_don_dien_tu.pdf",
+      "status": "existing"
+    }
+  ]
+}
