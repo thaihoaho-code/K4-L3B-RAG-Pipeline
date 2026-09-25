@@ -1,77 +1,77 @@
 [
   {
-    "question": "Thuế là gì?",
-    "expected_answer": "Thuế là một khoản nộp ngân sách nhà nước bắt buộc của tổ chức, hộ gia đình, hộ kinh doanh, cá nhân theo quy định của các luật thuế.",
-    "expected_context": "Khoản 1 Điều 3 Luật Quản lý thuế số 108/2025/QH15."
+    "question": "Phạm vi điều chỉnh của Nghị định 254/2026/NĐ-CP bao gồm những nội dung gì?",
+    "expected_answer": "Quy định chi tiết khoản 6 Điều 26, khoản 4 Điều 27 Luật Quản lý thuế số 108/2025/QH15 về loại hóa đơn, chứng từ điện tử; đối tượng sử dụng; nội dung, thời điểm lập; trường hợp không phải sử dụng; và trách nhiệm của các tổ chức cá nhân.",
+    "expected_context": "Điều 1 Nghị định 254/2026/NĐ-CP."
   },
   {
-    "question": "Hóa đơn điện tử là gì?",
-    "expected_answer": "Hóa đơn điện tử là hóa đơn có mã hoặc không có mã của cơ quan thuế được thể hiện ở dạng dữ liệu điện tử.",
-    "expected_context": "Điều 89 Luật Quản lý thuế số 108/2025/QH15."
+    "question": "Hóa đơn điện tử có mã của cơ quan thuế được hiểu như thế nào?",
+    "expected_answer": "Là hóa đơn điện tử được cơ quan thuế cấp mã (bao gồm số giao dịch duy nhất và chuỗi ký tự mã hóa) trước khi tổ chức, cá nhân bán hàng hóa, cung cấp dịch vụ gửi cho người mua.",
+    "expected_context": "Điều 3 Nghị định 254/2026/NĐ-CP."
   },
   {
-    "question": "Cơ quan quản lý thuế bao gồm những cơ quan nào?",
-    "expected_answer": "Cơ quan quản lý thuế bao gồm cơ quan thuế và cơ quan hải quan.",
-    "expected_context": "Khoản 2 Điều 2 Luật Quản lý thuế."
+    "question": "Hóa đơn điện tử không có mã của cơ quan thuế là gì?",
+    "expected_answer": "Là hóa đơn điện tử do tổ chức bán hàng hóa, cung cấp dịch vụ gửi cho người mua không có mã của cơ quan thuế.",
+    "expected_context": "Điều 3 Nghị định 254/2026/NĐ-CP."
   },
   {
-    "question": "Đăng ký thuế bao gồm những thông tin nào?",
-    "expected_answer": "Đăng ký thuế bao gồm tên người nộp thuế, mã số thuế, địa chỉ trụ sở chính, và các thông tin liên quan khác.",
-    "expected_context": "Chương III Luật Quản lý thuế."
+    "question": "Nhà cung cấp nước ngoài kinh doanh trên thương mại điện tử tại Việt Nam có được dùng hóa đơn điện tử không?",
+    "expected_answer": "Có, tổ chức nước ngoài có phát sinh doanh thu tính thuế tại Việt Nam được đăng ký tự nguyện sử dụng hóa đơn điện tử theo quy định.",
+    "expected_context": "Điều 2 Nghị định 254/2026/NĐ-CP."
   },
   {
-    "question": "Thời hạn nộp hồ sơ khai thuế môn bài là khi nào?",
-    "expected_answer": "Chậm nhất là ngày 30 tháng 01 năm sau năm thành lập hoặc bắt đầu hoạt động sản xuất, kinh doanh.",
-    "expected_context": "Luật Quản lý thuế."
+    "question": "Nếu hóa đơn điện tử bị sai địa chỉ nhưng đúng mã số thuế và số tiền thì người bán xử lý ra sao?",
+    "expected_answer": "Người bán thông báo cho người mua về việc hóa đơn đã lập sai và không phải lập lại hóa đơn. Đồng thời thực hiện thông báo với cơ quan thuế theo Mẫu số 04/SS-HĐĐT.",
+    "expected_context": "Khoản 1 Điều 10 Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Người nộp thuế có quyền gì?",
-    "expected_answer": "Người nộp thuế có quyền được hỗ trợ, hướng dẫn thực hiện việc nộp thuế; hưởng các ưu đãi về thuế; khiếu nại, khởi kiện các quyết định hành chính.",
-    "expected_context": "Điều 16 Luật Quản lý thuế."
+    "question": "Trong trường hợp hóa đơn bị sai mã số thuế hoặc sai số tiền, thuế suất thì phải xử lý như thế nào?",
+    "expected_answer": "Người bán có thể lựa chọn điều chỉnh hoặc thay thế hóa đơn điện tử cho hóa đơn sai sót.",
+    "expected_context": "Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Xử lý hóa đơn điện tử viết sai như thế nào?",
-    "expected_answer": "Người bán lập thông báo gửi cơ quan thuế để hủy hóa đơn sai sót và lập hóa đơn mới thay thế.",
-    "expected_context": "Nghị định 254/2026/NĐ-CP."
+    "question": "Nếu hóa đơn khởi tạo từ máy tính tiền bị sai tên, địa chỉ thì có được miễn lập lại hóa đơn không?",
+    "expected_answer": "Không. Trường hợp hóa đơn điện tử từ máy tính tiền bị sai thì người bán bắt buộc phải lập hóa đơn thay thế cho hóa đơn đã lập sai (trừ ngoại lệ trả lại hàng).",
+    "expected_context": "Điểm c Khoản 1 Điều 10 Thông tư số 91/2026/TT-BTC."
   },
   {
-    "question": "Mã số thuế cá nhân có thay đổi khi chuyển nơi ở không?",
-    "expected_answer": "Mã số thuế cá nhân không thay đổi trong suốt cuộc đời của cá nhân đó.",
-    "expected_context": "Điều 30 Luật Quản lý thuế."
+    "question": "Khi cơ quan thuế phát hiện hóa đơn có sai sót, họ sẽ gửi mẫu thông báo nào cho người bán?",
+    "expected_answer": "Cơ quan thuế sẽ thông báo cho người bán theo Mẫu số 01/TB-RSĐT Phụ lục IV kèm theo Thông tư 91/2026/TT-BTC để người bán rà soát.",
+    "expected_context": "Khoản 1 điều 10 Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Ai là đối tượng phải nộp thuế thu nhập cá nhân?",
-    "expected_answer": "Cá nhân cư trú có thu nhập chịu thuế phát sinh trong và ngoài lãnh thổ Việt Nam; cá nhân không cư trú có thu nhập chịu thuế phát sinh tại Việt Nam.",
-    "expected_context": "Luật Thuế thu nhập cá nhân."
+    "question": "Mẫu báo cáo hóa đơn điện tử đã lập sai để nộp cho cơ quan thuế là mẫu nào?",
+    "expected_answer": "Đó là Mẫu số 04/SS-HĐĐT Phụ lục III kèm theo Thông tư 91/2026/TT-BTC.",
+    "expected_context": "Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Trường hợp nào bị cưỡng chế thi hành quyết định hành chính về quản lý thuế?",
-    "expected_answer": "Người nộp thuế nợ tiền thuế quá 90 ngày kể từ ngày hết thời hạn nộp thuế theo quy định.",
-    "expected_context": "Điều 124 Luật Quản lý thuế."
+    "question": "Nếu tôi phát hiện bảng tổng hợp dữ liệu hóa đơn điện tử gửi cơ quan thuế bị thiếu hoặc sai dữ liệu thì làm sao?",
+    "expected_answer": "Người bán phải gửi bảng tổng hợp dữ liệu hóa đơn điện tử bổ sung.",
+    "expected_context": "Điểm e khoản 1, Điều 10 Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Hóa đơn điện tử có mã của cơ quan thuế là gì?",
-    "expected_answer": "Là hóa đơn điện tử được cơ quan thuế cấp mã trước khi tổ chức, cá nhân bán hàng hóa, cung cấp dịch vụ gửi cho người mua.",
-    "expected_context": "Điều 89 Luật Quản lý thuế."
+    "question": "Trong trường hợp người mua trả lại hàng hóa phải đăng ký quyền sở hữu (đã đăng ký tên người mua), ai xuất hóa đơn?",
+    "expected_answer": "Nếu người mua là đối tượng sử dụng hóa đơn điện tử, thì người mua thực hiện lập hóa đơn trả lại hàng cho người bán.",
+    "expected_context": "Điểm c.2 khoản 5 Điều 10 Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Thời hạn giải quyết hồ sơ hoàn thuế là bao lâu?",
-    "expected_answer": "Chậm nhất là 06 ngày làm việc đối với hồ sơ thuộc diện hoàn thuế trước, kiểm tra sau.",
-    "expected_context": "Điều 75 Luật Quản lý thuế."
+    "question": "Nếu trong cùng 1 tháng tôi lập sai nhiều hóa đơn của cùng 1 người mua thì có được gom chung lại xử lý không?",
+    "expected_answer": "Được. Người bán được lập một hóa đơn điều chỉnh/thay thế chung và đính kèm bảng kê các hóa đơn sai theo mẫu số 01/BK-ĐCTT.",
+    "expected_context": "Khoản 1 điều 10 Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Khai bổ sung hồ sơ khai thuế được thực hiện trong thời hạn nào?",
-    "expected_answer": "Được thực hiện trong thời hạn 10 năm kể từ ngày hết thời hạn nộp hồ sơ khai thuế của kỳ tính thuế có sai, sót.",
-    "expected_context": "Điều 47 Luật Quản lý thuế."
+    "question": "Trước khi lập hóa đơn điều chỉnh/thay thế cho tổ chức kinh tế mua hàng, cần thủ tục gì?",
+    "expected_answer": "Người bán và người mua (là tổ chức kinh tế) phải lập văn bản thỏa thuận ghi rõ nội dung sai sót và lưu giữ để xuất trình khi có yêu cầu.",
+    "expected_context": "Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Mức phạt chậm nộp tiền thuế là bao nhiêu?",
-    "expected_answer": "Mức tính tiền chậm nộp bằng 0,03%/ngày tính trên số tiền thuế chậm nộp.",
-    "expected_context": "Điều 59 Luật Quản lý thuế."
+    "question": "Việc điều chỉnh giá trị hóa đơn điện tử có quy tắc ghi dấu như thế nào?",
+    "expected_answer": "Hóa đơn điều chỉnh tăng ghi dấu dương, hóa đơn điều chỉnh giảm ghi dấu âm đúng với thực tế điều chỉnh.",
+    "expected_context": "Thông tư 91/2026/TT-BTC."
   },
   {
-    "question": "Kỳ tính thuế thu nhập doanh nghiệp được xác định như thế nào?",
-    "expected_answer": "Được xác định theo năm dương lịch hoặc năm tài chính.",
-    "expected_context": "Luật Thuế thu nhập doanh nghiệp."
+    "question": "Các đối tượng nào không được tính là người bán phải lập hóa đơn điện tử theo NĐ 254?",
+    "expected_answer": "Nghị định 254 chỉ quy định những tổ chức, cá nhân, đơn vị sự nghiệp, nhà cung cấp nước ngoài có hoạt động kinh doanh. Những đơn vị không có hoạt động kinh doanh (phát sinh doanh thu) sẽ không thuộc đối tượng áp dụng.",
+    "expected_context": "Điều 2 Nghị định 254/2026/NĐ-CP."
   }
 ]
