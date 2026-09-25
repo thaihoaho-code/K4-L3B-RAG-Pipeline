@@ -6,7 +6,7 @@
 - Mã học viên: 02424
 - Vai trò: Thành viên
 - Nhóm: LemonThree
-- Repository: https://github.com/thaihoaho-code/K4-L3B-RAG-Pipeline-LemonThree
+- Repository: https://github.com/thaihoaho-code/K4-L3B-RAG-Pipeline
 - Nhánh làm việc: `main`
 - Ngày báo cáo: 25/09/2026
 
